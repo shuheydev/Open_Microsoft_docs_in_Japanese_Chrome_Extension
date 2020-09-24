@@ -1,0 +1,37 @@
+{
+    "manifest_version": 2,
+    "name": "Open Microsoft docs in Japanese",
+    "version": "0.0.0.1",
+    "icons": {
+        "128": "icons/searchAndHighlightIcon.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "128": "icons/searchAndHighlightIcon.png"
+        },
+        "default_title": "Open Microsoft docs in Japanese"
+    },
+    "background": {
+        "scripts": [
+            "background/background.js"
+        ]
+    },
+    "commands": {
+        "_execute_browser_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+L"
+            }
+        },
+        "command_toggleHighlightNow": {
+            "suggested_key": {
+                "default": "Alt+Shift+L"
+            },
+            "description": "Toggle Highlight"
+        }
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "<all_urls>"
+    ]
+}
