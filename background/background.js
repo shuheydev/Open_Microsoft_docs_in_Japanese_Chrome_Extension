@@ -12,6 +12,11 @@ browser.browserAction.onClicked.addListener(function () {
         if (!re.exec(url))
             return;
 
+        //ロケールを日本語に変更
+        let reLocal = /^https:\/\/docs.microsoft.com\/.*?\//gi;
+        const replacement = 'https://docs.microsoft.com/ja-jp/';
+        url = url.replace(reLocal, replacement);
+
         //urlを別ウィンドウで開く
         browser.windows.create({ url: url });
     });
