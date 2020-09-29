@@ -71,7 +71,9 @@
         return re.test(url);
     }
 
-    //英日切り替え
+    //日英切り替え
+    //日本語は英語に
+    //日本語以外は日本語に
     function changeLanguage(url) {
         let reLang = /(?<=https:\/\/docs.microsoft.com\/).*?(?=\/)/gi;
         let result = url.match(reLang);
