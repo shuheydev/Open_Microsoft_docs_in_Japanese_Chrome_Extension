@@ -9,7 +9,9 @@
         "default_icon": {
             "128": "icons/MsDocOpenInJapaneseIcon.png"
         },
-        "default_title": "Open Microsoft docs in Japanese"
+        "default_title": "Open Microsoft docs in Japanese",
+        "default_popup": "popup/popup.html",
+        "browser_style": false
     },
     "background": {
         "scripts": [
