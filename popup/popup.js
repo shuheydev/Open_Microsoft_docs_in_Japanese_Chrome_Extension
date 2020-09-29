@@ -7,15 +7,15 @@
     button_currentTab.addEventListener('click', (e) => {
         console.log('Current Tab');
 
-        browser.tabs.getSelected(null, function (tab) {
-            let url = tab.url;
+        browser.tabs.query({ active: true, currentWindow: true }, tabs => {
+            let url = tabs[0].url;
 
             //https://docs.microsoft.com/に絞る
             if (!isMicrosoftDocs(url)) {
                 return;
             }
 
-            //ロケールを日本語に変更
+            //言語を日本語に変更
             let newUrl = changeLanguage(url);
 
             //urlを現在のタブで開く
@@ -27,16 +27,16 @@
     button_newTab.addEventListener('click', (e) => {
         console.log('New Tab');
 
-        browser.tabs.getSelected(null, function (tab) {
-            let url = tab.url;
-            let index = tab.index;
+        browser.tabs.query({ active: true, currentWindow: true }, tabs => {
+            let url = tabs[0].url;
+            let index = tabs[0].index;
 
             //https://docs.microsoft.com/に絞る
             if (!isMicrosoftDocs(url)) {
                 return;
             }
 
-            //ロケールを日本語に変更
+            //言語を日本語に変更
             let newUrl = changeLanguage(url);
 
             //urlを別タブで開く(現在のタブのとなり)
@@ -48,15 +48,16 @@
     button_newWindow.addEventListener('click', (e) => {
         console.log('New Window');
 
-        browser.tabs.getSelected(null, function (tab) {
-            let url = tab.url;
+        browser.tabs.query({ active: true, currentWindow: true }, tabs => {
+            let url = tabs[0].url;
+            console.log(tabs);
 
             //https://docs.microsoft.com/に絞る
             if (!isMicrosoftDocs(url)) {
                 return;
             }
 
-            //ロケールを日本語に変更
+            //言語を日本語に変更
             let newUrl = changeLanguage(url);
 
             //urlを別ウィンドウで開く
