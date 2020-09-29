@@ -12,6 +12,7 @@
 
             //https://docs.microsoft.com/に絞る
             if (!isMicrosoftDocs(url)) {
+                window.close();
                 return;
             }
 
@@ -20,6 +21,8 @@
 
             //urlを現在のタブで開く
             browser.tabs.update({ url: newUrl });
+
+            window.close();
         });
     });
 
@@ -33,6 +36,7 @@
 
             //https://docs.microsoft.com/に絞る
             if (!isMicrosoftDocs(url)) {
+                window.close();
                 return;
             }
 
@@ -41,6 +45,8 @@
 
             //urlを別タブで開く(現在のタブのとなり)
             browser.tabs.create({ url: newUrl, index: index + 1 });
+
+            window.close();
         });
     });
 
@@ -54,6 +60,7 @@
 
             //https://docs.microsoft.com/に絞る
             if (!isMicrosoftDocs(url)) {
+                window.close();
                 return;
             }
 
@@ -62,6 +69,8 @@
 
             //urlを別ウィンドウで開く
             browser.windows.create({ url: newUrl });
+
+            window.close();
         });
     });
 
