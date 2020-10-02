@@ -10,8 +10,8 @@
         browser.tabs.query({ active: true, currentWindow: true }, tabs => {
             let url = tabs[0].url;
 
-            //https://docs.microsoft.com/に絞る
-            if (!isMicrosoftDocs(url)) {
+            //対象サイトに絞る
+            if (!isTargetSites(url)) {
                 window.close();
                 return;
             }
@@ -34,8 +34,8 @@
             let url = tabs[0].url;
             let index = tabs[0].index;
 
-            //https://docs.microsoft.com/に絞る
-            if (!isMicrosoftDocs(url)) {
+            //対象サイトに絞る
+            if (!isTargetSites(url)) {
                 window.close();
                 return;
             }
@@ -58,8 +58,8 @@
             let url = tabs[0].url;
             console.log(tabs);
 
-            //https://docs.microsoft.com/に絞る
-            if (!isMicrosoftDocs(url)) {
+            //対象サイトに絞る
+            if (!isTargetSites(url)) {
                 window.close();
                 return;
             }
@@ -74,9 +74,10 @@
         });
     });
 
-    //MS Docsか否かをチェック
-    function isMicrosoftDocs(url) {
-        let re = /^https:\/\/docs.microsoft.com\/.*$/gi;
+    //対象サイトか否かをチェック
+    //docs.microsoft.com or azure.microsoft.com
+    function isTargetSites(url) {
+        let re = /^https:\/\/(docs|azure).microsoft.com\/.*$/gi;
         return re.test(url);
     }
 
@@ -84,7 +85,7 @@
     //日本語は英語に
     //日本語以外は日本語に
     function changeLanguage(url) {
-        let reLang = /(?<=https:\/\/docs.microsoft.com\/).*?(?=\/)/gi;
+        let reLang = /(?<=https:\/\/(docs|azure).microsoft.com\/).*?(?=\/)/gi;
         let result = url.match(reLang);
 
         if (result === null) {
