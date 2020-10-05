@@ -75,9 +75,9 @@
     });
 
     //対象サイトか否かをチェック
-    //docs.microsoft.com or azure.microsoft.com
+    //*.microsoft.com
     function isTargetSites(url) {
-        let re = /^https:\/\/(docs|azure).microsoft.com\/.*$/gi;
+        const re = /^https:\/\/.+?\.microsoft\.com\/.*$/gi;
         return re.test(url);
     }
 
@@ -85,7 +85,7 @@
     //日本語は英語に
     //日本語以外は日本語に
     function changeLanguage(url) {
-        let reLang = /(?<=https:\/\/(docs|azure).microsoft.com\/).*?(?=\/)/gi;
+        const reLang = /(?<=https:\/\/.+?\.microsoft\.com\/).*?(?=\/)/gi;
         let result = url.match(reLang);
 
         if (result === null) {
